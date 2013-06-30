@@ -1,4 +1,4 @@
-#PHP_CodeSniffer Standards#
+#PHP_CodeSniffer Standard#
 
 ##Errors##
 
