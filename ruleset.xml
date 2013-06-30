@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="DanBettles">
     <description>Dan Bettles' coding standard.</description>
+
+    <rule ref="Generic.Commenting.Todo"/>
+    <rule ref="Generic.Commenting.Fixme"/>
 </ruleset>
