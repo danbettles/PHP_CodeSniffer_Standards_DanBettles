@@ -2,13 +2,5 @@
     "name": "danbettles/codesniffer-standard",
     "require": {
         "squizlabs/php_codesniffer": "*"
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "rm -f ../../squizlabs/php_codesniffer/CodeSniffer/Standards/DanBettles && ln -s $(pwd) ../../squizlabs/php_codesniffer/CodeSniffer/Standards/DanBettles"
-        ],
-        "post-install-cmd": [
-            "rm -f ../../squizlabs/php_codesniffer/CodeSniffer/Standards/DanBettles && ln -s $(pwd) ../../squizlabs/php_codesniffer/CodeSniffer/Standards/DanBettles"
-        ]
     }
 }
