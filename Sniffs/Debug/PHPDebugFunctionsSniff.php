@@ -1,6 +1,6 @@
 <?php
 /**
- * DanBettles_Sniffs_Debug_PHPOutputFunctionsSniff
+ * DanBettles_Sniffs_Debug_PHPDebugFunctionsSniff
  *
  * @category PHP
  * @package  PHP_CodeSniffer_Standards_DanBettles
@@ -14,7 +14,7 @@ if (class_exists('Generic_Sniffs_PHP_ForbiddenFunctionsSniff', true) === false) 
 }
 
 /**
- * DanBettles_Sniffs_Debug_PHPOutputFunctionsSniff
+ * DanBettles_Sniffs_Debug_PHPDebugFunctionsSniff
  *
  * @category PHP
  * @package  PHP_CodeSniffer_Standards_DanBettles
