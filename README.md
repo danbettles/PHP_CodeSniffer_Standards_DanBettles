@@ -1,10 +1,12 @@
 #PHP_CodeSniffer Standard#
 
-##Errors##
+##The Sniffs##
+
+###Errors###
 
 * PHP debugging functions (`print_r` and `var_dump`) are forbidden because I never use them for anything other than debugging.
 
-##Warnings##
+###Warnings###
 
 * PHP output functions (`print` and `echo`) are considered suspect because I rarely - if ever - use them for anything other than debugging in object-oriented code, and, since I tend to use short-echo tags (`<?= ?>`) in output templates, I don't expect to see them elsewhere either.
 
@@ -13,3 +15,11 @@
 * JavaScript's `alert` function (`window.alert()`) is considered suspect because it's probably used more for debugging than anything else.
 
 * Comments appearing to contain debugging code will be the subject of warnings.  Debugging code should never be committed, even if it's commented.  At the very least, commented debugging code is garbage, unwanted noise, and there's no sense in making your code more difficult to follow by leaving it lying around.
+
+* One way or another, `TODO` and `FIXME` tags signal potential problems on the road ahead.
+
+##Installation Instructions##
+
+1. Download and unzip, or Git clone, the project into `DanBettles`.
+
+2. Use it: pass `--standard=DanBettles` if you put the code in the PHPCS standards directory; or `--standard=/path/to/DanBettles` if it lives elsewhere.
