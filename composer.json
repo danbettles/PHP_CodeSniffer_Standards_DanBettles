@@ -1,5 +1,14 @@
 {
     "name": "danbettles/codesniffer-standard",
+    "description": "A PHP_CodeSniffer standard that mainly looks for abandoned debugging code.",
+    "keywords": ["PHP_CodeSniffer","CodeSniffer","debugging"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Bettles",
+            "email": "danbettles@yahoo.co.uk"
+        }
+    ],
     "require": {
         "squizlabs/php_codesniffer": "*"
     }
