@@ -22,12 +22,13 @@ class DanBettles_Sniffs_Debug_PHPCommentedDebuggingSniff implements PHP_CodeSnif
 {
     /**
      * The regular expression that will be used to search for debugging in comments.
-     * 
+     *
      * Compiled when the sniff is registered.
-     * 
+     *
      * @var string
      */
     private $_regexp = '';
+
 
     /**
      * Returns an array of tokens this sniff wants to listen for.
@@ -39,51 +40,55 @@ class DanBettles_Sniffs_Debug_PHPCommentedDebuggingSniff implements PHP_CodeSnif
         $this->_compileRegexp();
 
         return array(T_COMMENT);
-    }
+
+    }//end register()
+
 
     /**
      * Creates a list of PCRE patterns from the specified list of values.
-     * 
+     *
      * @param array $values The values that should appear in the list.
-     * 
+     *
      * @return string
      */
     private function _createPCREPatternList(array $values)
     {
         return implode('|', array_map('preg_quote', $values));
-    }
+
+    }//end _createPCREPatternList()
+
 
     /**
      * Compiles the regular expression that will be used to search for debugging in comments.
-     * 
+     *
      * @return void
      */
     private function _compileRegexp()
     {
-        //In the context of this sniff, these are functions that can be called without any arguments
+        // In the context of this sniff, these are functions that can be called without any arguments.
         $special_functions = array(
-            'exit',
-            'die',
-        );
+                              'exit',
+                              'die',
+                             );
 
-        //In the context of this sniff, these are functions that must be called with one or more arguments
+        // In the context of this sniff, these are functions that must be called with one or more arguments.
         $functions = array_merge(
             array(
-                'print_r',
-                'var_dump',
-                'print',
-                'echo',
-            ), 
+             'print_r',
+             'var_dump',
+             'print',
+             'echo',
+            ),
             $special_functions
         );
 
         $function_list = $this->_createPCREPatternList($functions);
 
         $pattern_templates = array(
-            '\b(%s)\s*\(',
-            '\b(%s)\s*["\']',
-            '\b(%s)\s*\$',
-        );
+                              '\b(%s)\s*\(',
+                              '\b(%s)\s*["\']',
+                              '\b(%s)\s*\$',
+                             );
 
         $patterns = array();
 
@@ -91,11 +96,13 @@ class DanBettles_Sniffs_Debug_PHPCommentedDebuggingSniff implements PHP_CodeSnif
             $patterns[] = sprintf($pattern_template, $function_list);
         }
 
-        //Add a pattern to deal with the special case of 'function' calls with no argument list at all
+        // Add a pattern to deal with the special case of 'function' calls with no argument list at all.
         $patterns[] = '\b(' . $this->_createPCREPatternList($special_functions) . ')\s*;';
 
         $this->_regexp = '/' . implode('|', $patterns) . '/';
-    }
+
+    }//end _compileRegexp()
+
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -109,8 +116,11 @@ class DanBettles_Sniffs_Debug_PHPCommentedDebuggingSniff implements PHP_CodeSnif
     {
         $aFileTokenRecord = $phpcsFile->getTokens();
 
-        if (preg_match($this->_regexp, $aFileTokenRecord[$stackPtr]['content'])) {
+        if (preg_match($this->_regexp, $aFileTokenRecord[$stackPtr]['content']) > 0) {
             $phpcsFile->addWarning("Commented debugging found", $stackPtr);
         }
-    }
-}
+
+    }//end process()
+
+
+}//end class

@@ -31,8 +31,8 @@ class DanBettles_Sniffs_Debug_PHPDebugFunctionsSniff extends Generic_Sniffs_PHP_
      *
      * @var array
      */
-    protected $forbiddenFunctions = array(
-        'print_r' => null,
-        'var_dump' => null,
-    );
-}
+    public $forbiddenFunctions = array(
+                                  'print_r'  => null,
+                                  'var_dump' => null,
+                                 );
+}//end class
