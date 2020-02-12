@@ -1,27 +1,14 @@
 <?php
-/**
- * @author Dan Bettles <danbettles@yahoo.co.uk>
- */
 
-/**
- * @author Dan Bettles <danbettles@yahoo.co.uk>
- */
-class DanBettles_Tests_Debug_PHPCommentedDebuggingUnitTest extends AbstractSniffUnitTest
+namespace DanBettles\PhpCodeSnifferStandard\Tests\DanBettles\Sniffs\Debug;
+
+use DanBettles\PhpCodeSnifferStandard\Tests\TestCase;
+
+class PHPCommentedDebuggingSniffTest extends TestCase
 {
-    /**
-     * @see parent::getErrorList()
-     */
-    protected function getErrorList($fixtureFilename = '')
+    public function testSniffEmitsWarnings()
     {
-        return array();
-    }
-
-    /**
-     * @see parent::getWarningList()
-     */
-    protected function getWarningList($fixtureFilename = '')
-    {
-        return array(
+        $this->assertEquals([
             8 => 1,
             9 => 1,
             10 => 1,
@@ -62,6 +49,6 @@ class DanBettles_Tests_Debug_PHPCommentedDebuggingUnitTest extends AbstractSniff
             45 => 1,
             46 => 1,
             47 => 1,
-        );
+        ], $this->sniffAndGetNumWarningsPerLine(__DIR__ . '/PHPCommentedDebuggingSniffTest.inc'));
     }
 }

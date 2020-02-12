@@ -2,14 +2,33 @@
     "name": "danbettles/codesniffer-standard",
     "description": "A PHP_CodeSniffer standard that mainly looks for abandoned debugging code.",
     "keywords": ["PHP_CodeSniffer","CodeSniffer","debugging"],
-    "license": "MIT",
+    "license": "ISC",
     "authors": [
         {
             "name": "Dan Bettles",
             "email": "danbettles@yahoo.co.uk"
         }
     ],
+    "autoload": {
+        "psr-4": {"DanBettles\\PhpCodeSnifferStandard\\": "src/"}
+    },
     "require": {
-        "squizlabs/php_codesniffer": "2.*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^7.0"
+    },
+    "scripts": {
+        "app:test": "phpunit --bootstrap=tests/bootstrap.php --colors=always tests/",
+        "app:lint": "phpcs --standard=config/phpcs.xml -p --colors",
+        "app:check-quality": [
+            "@app:test",
+            "@app:lint"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "7.3"
+        }
     }
 }
