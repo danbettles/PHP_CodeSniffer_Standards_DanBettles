@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DanBettles\PhpCodeSnifferStandard\Tests\DanBettles\Sniffs\Debug;
 
@@ -6,7 +6,7 @@ use DanBettles\PhpCodeSnifferStandard\Tests\TestCase;
 
 class PHPCommentedDebuggingSniffTest extends TestCase
 {
-    public function testSniffEmitsWarnings()
+    public function testSniffEmitsWarnings(): void
     {
         $this->assertEquals([
             8 => 1,

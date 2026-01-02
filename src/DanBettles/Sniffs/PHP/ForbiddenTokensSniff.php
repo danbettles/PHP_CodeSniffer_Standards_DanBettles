@@ -1,49 +1,59 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DanBettles\PhpCodeSnifferStandard\DanBettles\Sniffs\PHP;
 
+use Override;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 
+/**
+ * @phpstan-type TokenRecord array{content:string}
+ */
 abstract class ForbiddenTokensSniff implements Sniff
 {
     /**
      * An array containing the IDs of forbidden tokens
      *
-     * @var array
+     * @var int[]
      */
-    private $forbiddenTokens = [];
+    private array $forbiddenTokens = [];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function register()
+    #[Override]
+    public function register(): array
     {
         return $this->forbiddenTokens;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function process(File $phpcsFile, $stackPtr)
-    {
-        $aFileTokenRecord = $phpcsFile->getTokens();
-        $this->addMessage($phpcsFile, $stackPtr, $aFileTokenRecord[$stackPtr]);
+    #[Override]
+    public function process(
+        File $phpcsFile,
+        $stackPtr,
+    ): void {
+        $this->addMessage(
+            $phpcsFile,
+            $stackPtr,
+            $phpcsFile->getTokens()[$stackPtr],
+        );
     }
 
     /**
      * Sets the IDs of forbidden tokens
      *
      * Call before `register()` is executed
+     *
+     * @param int[] $ids
      */
-    protected function setTokens(array $aToken): self
+    protected function setTokens(array $ids): self
     {
-        $this->forbiddenTokens = $aToken;
+        $this->forbiddenTokens = $ids;
+
         return $this;
     }
 
     /**
-     * Gets the IDs of forbidden tokens
+     * Returns the IDs of forbidden tokens
+     *
+     * @return int[]
      */
     protected function getTokens(): array
     {
@@ -57,10 +67,13 @@ abstract class ForbiddenTokensSniff implements Sniff
      *
      * @param File $file  The file containing the sniffed token
      * @param int $tokenNo  The position of the sniffed token on the stack
-     * @param array $tokenRecord  The sniffed token
+     * @phpstan-param TokenRecord $tokenRecord  The sniffed token
      */
-    protected function addMessage(File $file, int $tokenNo, array $tokenRecord): void
-    {
+    protected function addMessage(
+        File $file,
+        int $tokenNo,
+        array $tokenRecord,
+    ): void {
         $file->addError("Forbidden token `%s` found", $tokenNo, 'Found', [$tokenRecord['content']]);
     }
 }

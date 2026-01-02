@@ -1,9 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-$vendorDir = dirname(__DIR__) . '/vendor';
+use DanBettles\PhpCodeSnifferStandard\Tests\TestCase;
 
-require "{$vendorDir}/autoload.php";
-require_once "{$vendorDir}/squizlabs/php_codesniffer/tests/bootstrap.php";
-
-require_once __DIR__ . '/Sniffer.php';
-require_once __DIR__ . '/TestCase.php';
+TestCase::configure([
+    'projectDir' => dirname(__DIR__),
+    'standardName' => 'DanBettles',
+]);

@@ -1,0 +1,21 @@
+<?php
+
+namespace PHP_CodeSniffer\Files;
+
+class File
+{
+    /**
+     * @return array<int,array{content:string}>
+     */
+    public function getTokens(): array;
+
+    /**
+     * @return array<int,array<int,array<string,mixed>[]>> MessagesArray
+     */
+    public function getErrors(): array;
+
+    /**
+     * @return array<int,array<int,array<string,mixed>[]>> MessagesArray
+     */
+    public function getWarnings(): array;
+}

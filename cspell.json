@@ -1,0 +1,9 @@
+{
+    "ignoreWords": [
+        "codesniffer",
+        "phpcs",
+        "phpstan",
+        "phpunit",
+        "squizlabs"
+    ]
+}

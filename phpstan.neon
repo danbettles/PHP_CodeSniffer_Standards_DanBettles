@@ -1,0 +1,9 @@
+parameters:
+    level: max
+
+    stubFiles:
+        - tests/phpstan/stubs/PHP_CodeSniffer/Files/File.stub
+
+    paths:
+        - src/
+        - tests/
