@@ -22,11 +22,19 @@
 
 ## Installation
 
-Install using Composer: `composer --dev require danbettles/codesniffer-standard`.
+Install using Composer, thus:
+
+```sh
+composer --dev require danbettles/codesniffer-standard
+```
 
 ## Usage
 
-You can reference the Standard on the command-line with `--standard=path/to/vendor/danbettles/codesniffer-standard/src/DanBettles`.
+You can reference the Standard on the command-line with:
+
+```sh
+--standard=path/to/vendor/danbettles/codesniffer-standard/src/DanBettles
+```
 
 Alternatively, add the following Rule Element to your XML config file.
 
